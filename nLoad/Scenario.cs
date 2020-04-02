@@ -34,7 +34,7 @@ namespace nLoad
             {
                 if (token.IsCancellationRequested) break;
 
-                context.Connection = scenario.ConnectionPool.OpenConnection();
+                context.Connection = scenario.ConnectionPool?.OpenConnection();
 
                 var watch = Stopwatch.StartNew();
                 var response = step.Executor(context);
@@ -56,7 +56,7 @@ namespace nLoad
                     progress?.Report(iteration * i);
                 }
 
-                scenario.ConnectionPool.CloseConnection(context.Connection);
+                if(context.Connection != null) scenario.ConnectionPool.CloseConnection(context.Connection);
             }
 
             return result;

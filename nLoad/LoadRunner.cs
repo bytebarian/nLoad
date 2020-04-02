@@ -68,7 +68,7 @@ namespace nLoad
         }
     }
 
-    public class LoadRunner<T>
+    public class LoadRunner
     {
         private class Statistics
         {
@@ -87,11 +87,11 @@ namespace nLoad
         }
 
         private CancellationTokenSource _cts;
-        public ScenarioBuilder<T> ScenarioBuilder { get; set; }
+        public ScenarioBuilder ScenarioBuilder { get; set; }
 
-        public static LoadRunner<T> RegisterScenarios(Scenario scenario) => new LoadRunner<T>
+        public static LoadRunner RegisterScenarios(Scenario scenario) => new LoadRunner
         {
-            ScenarioBuilder = ScenarioBuilder<T>.BuildScenario(scenario)
+            ScenarioBuilder = ScenarioBuilder.BuildScenario(scenario)
         };
 
         public Task RunInConsole(bool saveToFile = true)

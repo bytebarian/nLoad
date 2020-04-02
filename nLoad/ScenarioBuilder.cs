@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace nLoad
 {
-    public class ScenarioBuilder<T>
+    public class ScenarioBuilder
     {
         public Scenario ScenarioToRun { get; set; }
         private ConcurrentBag<ScenarioRunResult> resultBug = new ConcurrentBag<ScenarioRunResult>();
@@ -17,7 +17,7 @@ namespace nLoad
             ScenarioToRun = scenario;
         }
 
-        public static ScenarioBuilder<T> BuildScenario(Scenario scenario) => new ScenarioBuilder<T>(scenario);
+        public static ScenarioBuilder BuildScenario(Scenario scenario) => new ScenarioBuilder(scenario);
 
         public ScenarioRunResult BuildAndRun(CancellationToken ct, ProgressBar pbar)
         {
